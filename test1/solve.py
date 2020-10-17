@@ -16,6 +16,7 @@ import utils
 def solve():
     data = []
     for i in range(1, 6):
+        # TODO 自动生成cookie？貌似不需要
         with requests.Session() as sess:
             headers = {'Accept': 'application/json, text/javascript, */*; q=0.01',
                          'Accept-Encoding': 'gzip, deflate',
