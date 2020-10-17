@@ -35,6 +35,7 @@ def solve():
                 'Hm_lpvt_9bcbda9cbf86757998a2339a0437208e': '1602852782'
             }
             resp = sess.get(url, headers=headers, cookies=cookies)
+            print(resp.text)
             data.extend([ _.get("value") for _ in resp.json().get('data')])
     return sum(data)/len(data)
 

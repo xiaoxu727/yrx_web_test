@@ -31,7 +31,7 @@ def str_2_headers(file):
             k_v = l.split(":")
             headers[k_v[0]] = k_v[1]
             l = f.readline()
-    return headers
+    pprint.pprint(headers)
 
 if __name__ == '__main__':
     # pprint.pprint(str_2_headers('headers.txt'))
