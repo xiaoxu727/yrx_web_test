@@ -11,6 +11,7 @@
 import utils
 import requests
 # from requests.exceptions import
+from requests.cookies import RequestsCookieJar
 
 def solve():
     # sess = utils.yrf_login()
@@ -41,6 +42,10 @@ def solve():
                          'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36'
                         }
 
+        cookie_jar = RequestsCookieJar()
+        cookie_jar.set('Hm_lvt_9bcbda9cbf86757998a2339a0437208e','1602903223,1602906447', path='\\')
+        cookie_jar.set('Hm_lpvt_9bcbda9cbf86757998a2339a0437208e','1602906512',path='\\')
+        cookie_jar.set('sessionid','tv10se9un5b1k3nj0msspkrba55ixd59', path='\\')
 
         cookies = {'Hm_lvt_9bcbda9cbf86757998a2339a0437208e': '1602903223,1602906447',
                   'Hm_lpvt_9bcbda9cbf86757998a2339a0437208e': '1602906512',
@@ -49,8 +54,8 @@ def solve():
         url_before = 'http://match.yuanrenxue.com/logo'
         # sess.get(url_login, headers=headers, cookies=cookies)
         resp = sess.post(url=url_before, headers=header_before, proxies={'http': 'http://localhost:8888'}, cookies=cookies)
-        url = "http://match.yuanrenxue.com/api/match/3?page=5"
-        resp = sess.get(url=url, headers=headers, proxies={'http': 'http://localhost:8888'}, cookies=cookies)
+        url = "http://match.yuanrenxue.com/api/match/3?page=2"
+        resp = sess.get(url=url, headers=headers, proxies={'http': 'http://localhost:8888'}, cookies=cookie_jar)
 
         print(resp.text)
 
@@ -58,3 +63,8 @@ def solve():
 if __name__ == '__main__':
     solve()
 
+
+import urllib
+import urllib3
+import json
+urllib.request.Request

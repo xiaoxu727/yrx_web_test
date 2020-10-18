@@ -43,6 +43,17 @@ def str_2_cookies(str):
         cookie[k.strip()] = v.strip()
     return cookie
 
+import time
+import base64
+
+
+def btoa(str):
+    # timestamp = str(int(time.time()))
+    # a = '8808'
+    b = base64.encodebytes(str.encode("utf8"))
+    tokens = b.decode("utf8").strip()
+    return tokens
+
 def yrf_login():
     url = 'http://match.yuanrenxue.com/api/login'
 
@@ -60,8 +71,14 @@ def yrf_login():
     return s
 
 
+def avg(ls):
+    ls_int = [float(i) for i in ls]
+    return sum(ls_int)/len(ls_int)
+
+
 if __name__ == '__main__':
     # pprint.pprint(str_2_headers('resources/headers.txt'))
-    pprint.pprint(str_2_cookies('Hm_lvt_9bcbda9cbf86757998a2339a0437208e=1602903223; Hm_lpvt_9bcbda9cbf86757998a2339a0437208e=1602903223; sessionid=tv10se9un5b1k3nj0msspkrba55ixd59'))
+    # pprint.pprint(str_2_cookies('Hm_lvt_9bcbda9cbf86757998a2339a0437208e=1602903223; Hm_lpvt_9bcbda9cbf86757998a2339a0437208e=1602903223; sessionid=tv10se9un5b1k3nj0msspkrba55ixd59'))
     # print(get_timestamp())
     # yrf_login()
+    print(btoa('password'))
